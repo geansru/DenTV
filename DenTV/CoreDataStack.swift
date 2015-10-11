@@ -40,4 +40,13 @@ class CoreDataStack {
         )
     }
     
+    func saveContext() {
+        do {
+            try context.save()
+        } catch let error as NSError {
+            print(__FUNCTION__)
+            print(error.localizedDescription)
+        }
+    }
+    
 }

@@ -10,6 +10,7 @@
 		70FF5D99AD8EFB71FF0FC73D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D2F48610F672A29F4896DE /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D52900691BCABACF001426F6 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52900681BCABACF001426F6 /* Video.swift */; settings = {ASSET_TAGS = (); }; };
 		D529006B1BCABC79001426F6 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529006A1BCABC79001426F6 /* CoreDataStack.swift */; settings = {ASSET_TAGS = (); }; };
+		D53C66D41BCAC40D0065C916 /* DenTV.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D53C66D21BCAC40D0065C916 /* DenTV.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
 		D5462A321BCA4887007673D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5462A311BCA4887007673D5 /* AppDelegate.swift */; };
 		D5462A341BCA4887007673D5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5462A331BCA4887007673D5 /* HomeViewController.swift */; };
 		D5462A361BCA4887007673D5 /* PlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5462A351BCA4887007673D5 /* PlaylistsViewController.swift */; };
@@ -25,6 +26,7 @@
 		479803E71E2FE76BB6632109 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D52900681BCABACF001426F6 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		D529006A1BCABC79001426F6 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		D53C66D31BCAC40D0065C916 /* DenTV.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DenTV.xcdatamodel; sourceTree = "<group>"; };
 		D5462A2E1BCA4886007673D5 /* DenTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DenTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5462A311BCA4887007673D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5462A331BCA4887007673D5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -80,9 +82,10 @@
 			children = (
 				D5462A451BCA48E9007673D5 /* DenTV.entitlements */,
 				D5462A311BCA4887007673D5 /* AppDelegate.swift */,
+				D53C66D21BCAC40D0065C916 /* DenTV.xcdatamodeld */,
+				D529006A1BCABC79001426F6 /* CoreDataStack.swift */,
 				D52900681BCABACF001426F6 /* Video.swift */,
 				D5462A331BCA4887007673D5 /* HomeViewController.swift */,
-				D529006A1BCABC79001426F6 /* CoreDataStack.swift */,
 				D5462A351BCA4887007673D5 /* PlaylistsViewController.swift */,
 				D5EFC6D31BCAA1D700423BF4 /* FavouriteVideoListViewController.swift */,
 				D5462A371BCA4887007673D5 /* Main.storyboard */,
@@ -231,6 +234,7 @@
 			files = (
 				D5EFC6D41BCAA1D700423BF4 /* FavouriteVideoListViewController.swift in Sources */,
 				D5462A361BCA4887007673D5 /* PlaylistsViewController.swift in Sources */,
+				D53C66D41BCAC40D0065C916 /* DenTV.xcdatamodeld in Sources */,
 				D5462A321BCA4887007673D5 /* AppDelegate.swift in Sources */,
 				D529006B1BCABC79001426F6 /* CoreDataStack.swift in Sources */,
 				D5462A341BCA4887007673D5 /* HomeViewController.swift in Sources */,
@@ -397,6 +401,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D53C66D21BCAC40D0065C916 /* DenTV.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D53C66D31BCAC40D0065C916 /* DenTV.xcdatamodel */,
+			);
+			currentVersion = D53C66D31BCAC40D0065C916 /* DenTV.xcdatamodel */;
+			path = DenTV.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D5462A261BCA4886007673D5 /* Project object */;
 }

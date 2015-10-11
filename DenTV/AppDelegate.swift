@@ -7,21 +7,17 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    lazy var coreDataStack = CoreDataStack()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        if let tabBarController = window?.rootViewController as? UITabBarController {
-            let tabBar = tabBarController.tabBar
-            let bgView = UIView(frame: CGRectMake(0, 0, (window?.frame.width)!, tabBar.frame.height))
-            bgView.backgroundColor = UIColor.blackColor()
-            tabBar.insertSubview(bgView, atIndex: 0)
-        }
-        UITabBar.appearance().tintColor = UIColor.yellowColor()
+        configureAppearance()
+        propagateContext()
         return true
     }
 
@@ -33,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        coreDataStack.saveContext()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -44,9 +41,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        coreDataStack.saveContext()
     }
 
+    // MARK: - Helpers
+    func configureAppearance() {
+        if let tabBarController = window?.rootViewController as? UITabBarController {
+            let tabBar = tabBarController.tabBar
+            let bgView = UIView(frame: CGRectMake(0, 0, (window?.frame.width)!, tabBar.frame.height))
+            bgView.backgroundColor = UIColor.blackColor()
+            tabBar.insertSubview(bgView, atIndex: 0)
+        }
+        UITabBar.appearance().tintColor = UIColor.yellowColor()
+    }
 
+    func propagateContext() {
+        if let tabBarController = window?.rootViewController as? UITabBarController {
+            if let controller = tabBarController.viewControllers?.first as? HomeViewController {
+                controller.managedContext = coreDataStack.context
+            }
+            if let nav_controller = tabBarController.viewControllers?[1] as? UINavigationController {
+                if let controller = nav_controller.topViewController as? PlaylistsViewController {
+                    controller.managedContext = coreDataStack.context
+                }
+            }
+            if let nav_controller = tabBarController.viewControllers?[2] as? UINavigationController {
+                if let controller = nav_controller.topViewController as? PlaylistsViewController {
+                    controller.managedContext = coreDataStack.context
+                }
+            }
+        }
+    }
 }
 
