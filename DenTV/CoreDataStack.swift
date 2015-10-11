@@ -9,38 +9,44 @@
 import CoreData
 
 let dataStorageName = "DenTV"
+let RESOURCE_NAME = "DenTV"
 class CoreDataStack {
-    let context:NSManagedObjectContext
-    let psc:NSPersistentStoreCoordinator
-    let model:NSManagedObjectModel
-    let store:NSPersistentStore?
+    let context: NSManagedObjectContext
+    let psc: NSPersistentStoreCoordinator
+    let model: NSManagedObjectModel
+    let store: NSPersistentStore?
+    
+    class func applicationDocumentsDirectory() -> NSURL {
+        let fileManager = NSFileManager.defaultManager()
+        
+        let urls = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask) 
+        return urls[0]
+    }
     
     init() {
         let bundle = NSBundle.mainBundle()
-        let modelURL = bundle.URLForResource(dataStorageName, withExtension: "momd")!
-        model = NSManagedObjectModel(contentsOfURL: modelURL)! //1
-        psc = NSPersistentStoreCoordinator(managedObjectModel: model) //2
-        context = NSManagedObjectContext() //3
+        let modelURL = bundle.URLForResource(RESOURCE_NAME, withExtension: "momd")
+        
+        model = NSManagedObjectModel(contentsOfURL: modelURL!)!
+        psc = NSPersistentStoreCoordinator(managedObjectModel: model)
+        
+        context = NSManagedObjectContext()
+        
         context.persistentStoreCoordinator = psc
         
+        let documentURL = CoreDataStack.applicationDocumentsDirectory()
+        let storeURL = documentURL.URLByAppendingPathComponent(RESOURCE_NAME)
+        
         let options = [NSMigratePersistentStoresAutomaticallyOption: true]
-        var applicationDocumentDirectory: NSURL {
-            let directory: NSSearchPathDirectory = NSSearchPathDirectory.DocumentDirectory
-            let domainMask = NSSearchPathDomainMask.UserDomainMask
-            let paths = NSSearchPathForDirectoriesInDomains(directory, domainMask, true)
-            let path = paths[0]
-            return NSURL(string: path)!
+        
+        do {
+        store = try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: options)
+        } catch let error as NSError {
+            print(error.localizedDescription); abort()
         }
-        let url = applicationDocumentDirectory.URLByAppendingPathComponent(dataStorageName)
-        let storeType = NSSQLiteStoreType
-        store = try! psc.addPersistentStoreWithType(storeType,
-            configuration: nil,
-            URL: url,
-            options: options
-        )
     }
     
-    func saveContext() {
+    func save() {
         do {
             try context.save()
         } catch let error as NSError {
