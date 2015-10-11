@@ -15,7 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        if let tabBarController = window?.rootViewController as? UITabBarController {
+            let tabBar = tabBarController.tabBar
+            let bgView = UIView(frame: CGRectMake(0, 0, (window?.frame.width)!, tabBar.frame.height))
+            bgView.backgroundColor = UIColor.blackColor()
+            tabBar.insertSubview(bgView, atIndex: 0)
+        }
+        UITabBar.appearance().tintColor = UIColor.yellowColor()
         return true
     }
 
