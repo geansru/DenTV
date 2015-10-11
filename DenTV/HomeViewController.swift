@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  HomeViewController.swift
 //  DenTV
 //
 //  Created by Dmitriy Roytman on 11.10.15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		70FF5D99AD8EFB71FF0FC73D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D2F48610F672A29F4896DE /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D5462A321BCA4887007673D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5462A311BCA4887007673D5 /* AppDelegate.swift */; };
-		D5462A341BCA4887007673D5 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5462A331BCA4887007673D5 /* FirstViewController.swift */; };
-		D5462A361BCA4887007673D5 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5462A351BCA4887007673D5 /* SecondViewController.swift */; };
+		D5462A341BCA4887007673D5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5462A331BCA4887007673D5 /* HomeViewController.swift */; };
+		D5462A361BCA4887007673D5 /* PlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5462A351BCA4887007673D5 /* PlaylistsViewController.swift */; };
 		D5462A391BCA4887007673D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5462A371BCA4887007673D5 /* Main.storyboard */; };
 		D5462A3B1BCA488A007673D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5462A3A1BCA488A007673D5 /* Assets.xcassets */; };
 		D5462A3E1BCA488B007673D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5462A3C1BCA488B007673D5 /* LaunchScreen.storyboard */; };
+		D5EFC6D41BCAA1D700423BF4 /* FavouriteVideoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EFC6D31BCAA1D700423BF4 /* FavouriteVideoListViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,13 +23,14 @@
 		479803E71E2FE76BB6632109 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D5462A2E1BCA4886007673D5 /* DenTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DenTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5462A311BCA4887007673D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D5462A331BCA4887007673D5 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		D5462A351BCA4887007673D5 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		D5462A331BCA4887007673D5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D5462A351BCA4887007673D5 /* PlaylistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsViewController.swift; sourceTree = "<group>"; };
 		D5462A381BCA4887007673D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D5462A3A1BCA488A007673D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5462A3D1BCA488B007673D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D5462A3F1BCA488B007673D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5462A451BCA48E9007673D5 /* DenTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DenTV.entitlements; sourceTree = "<group>"; };
+		D5EFC6D31BCAA1D700423BF4 /* FavouriteVideoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteVideoListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,8 +76,9 @@
 			children = (
 				D5462A451BCA48E9007673D5 /* DenTV.entitlements */,
 				D5462A311BCA4887007673D5 /* AppDelegate.swift */,
-				D5462A331BCA4887007673D5 /* FirstViewController.swift */,
-				D5462A351BCA4887007673D5 /* SecondViewController.swift */,
+				D5462A331BCA4887007673D5 /* HomeViewController.swift */,
+				D5462A351BCA4887007673D5 /* PlaylistsViewController.swift */,
+				D5EFC6D31BCAA1D700423BF4 /* FavouriteVideoListViewController.swift */,
 				D5462A371BCA4887007673D5 /* Main.storyboard */,
 				D5462A3A1BCA488A007673D5 /* Assets.xcassets */,
 				D5462A3C1BCA488B007673D5 /* LaunchScreen.storyboard */,
@@ -220,9 +223,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5462A361BCA4887007673D5 /* SecondViewController.swift in Sources */,
+				D5EFC6D41BCAA1D700423BF4 /* FavouriteVideoListViewController.swift in Sources */,
+				D5462A361BCA4887007673D5 /* PlaylistsViewController.swift in Sources */,
 				D5462A321BCA4887007673D5 /* AppDelegate.swift in Sources */,
-				D5462A341BCA4887007673D5 /* FirstViewController.swift in Sources */,
+				D5462A341BCA4887007673D5 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

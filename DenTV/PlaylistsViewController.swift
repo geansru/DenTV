@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  PlaylistsViewController.swift
 //  DenTV
 //
 //  Created by Dmitriy Roytman on 11.10.15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class PlaylistsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
