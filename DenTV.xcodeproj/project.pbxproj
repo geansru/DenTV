@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		70FF5D99AD8EFB71FF0FC73D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D2F48610F672A29F4896DE /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D504A1DE1BCC2DA5000145AD /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D504A1DD1BCC2DA5000145AD /* UIImageView+DownloadImage.swift */; settings = {ASSET_TAGS = (); }; };
+		D504A1E01BCC3013000145AD /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D504A1DF1BCC3013000145AD /* PlayerViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D51C5C081BCC236B007156DB /* VideoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51C5C071BCC236B007156DB /* VideoDetailsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D529006B1BCABC79001426F6 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529006A1BCABC79001426F6 /* CoreDataStack.swift */; settings = {ASSET_TAGS = (); }; };
 		D534F23A1BCB91CD00AA8201 /* Seed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D534F2391BCB91CD00AA8201 /* Seed.swift */; settings = {ASSET_TAGS = (); }; };
 		D534F23C1BCB91E100AA8201 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = D534F23B1BCB91E100AA8201 /* Content.swift */; settings = {ASSET_TAGS = (); }; };
@@ -31,6 +34,9 @@
 		09D9CE04C08DE573C40BAF16 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		40D2F48610F672A29F4896DE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		479803E71E2FE76BB6632109 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D504A1DD1BCC2DA5000145AD /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
+		D504A1DF1BCC3013000145AD /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		D51C5C071BCC236B007156DB /* VideoDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDetailsViewController.swift; sourceTree = "<group>"; };
 		D529006A1BCABC79001426F6 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		D534F2391BCB91CD00AA8201 /* Seed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seed.swift; sourceTree = "<group>"; };
 		D534F23B1BCB91E100AA8201 /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
@@ -76,6 +82,7 @@
 		D534F23F1BCB91F800AA8201 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D504A1DD1BCC2DA5000145AD /* UIImageView+DownloadImage.swift */,
 				D534F2401BCBBE8400AA8201 /* Log.swift */,
 				D534F2391BCB91CD00AA8201 /* Seed.swift */,
 				D534F23B1BCB91E100AA8201 /* Content.swift */,
@@ -124,6 +131,8 @@
 				D534F23F1BCB91F800AA8201 /* Helpers */,
 				D5462A331BCA4887007673D5 /* HomeViewController.swift */,
 				D5462A351BCA4887007673D5 /* PlaylistsViewController.swift */,
+				D51C5C071BCC236B007156DB /* VideoDetailsViewController.swift */,
+				D504A1DF1BCC3013000145AD /* PlayerViewController.swift */,
 				D5EFC6D31BCAA1D700423BF4 /* FavouriteVideoListViewController.swift */,
 				D5462A371BCA4887007673D5 /* Main.storyboard */,
 				D5462A3A1BCA488A007673D5 /* Assets.xcassets */,
@@ -275,14 +284,17 @@
 				D534F23E1BCB91EF00AA8201 /* Parser.swift in Sources */,
 				D53C66DB1BCAC65F0065C916 /* Video.swift in Sources */,
 				D53C66DC1BCAC65F0065C916 /* Playlist+CoreDataProperties.swift in Sources */,
+				D51C5C081BCC236B007156DB /* VideoDetailsViewController.swift in Sources */,
 				D5462A321BCA4887007673D5 /* AppDelegate.swift in Sources */,
 				D534F2411BCBBE8400AA8201 /* Log.swift in Sources */,
 				D529006B1BCABC79001426F6 /* CoreDataStack.swift in Sources */,
 				D534F2471BCBE9D000AA8201 /* Video+CoreDataProperties 18-14-08-048.swift in Sources */,
 				D53C66DD1BCAC65F0065C916 /* Playlist.swift in Sources */,
+				D504A1DE1BCC2DA5000145AD /* UIImageView+DownloadImage.swift in Sources */,
 				D5462A341BCA4887007673D5 /* HomeViewController.swift in Sources */,
 				D534F23A1BCB91CD00AA8201 /* Seed.swift in Sources */,
 				D534F23C1BCB91E100AA8201 /* Content.swift in Sources */,
+				D504A1E01BCC3013000145AD /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

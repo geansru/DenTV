@@ -107,19 +107,23 @@ class Parser {
     }
     
     private func parseSearch() -> [AnyObject] {
-        var videos: [Video] = []
+        var list: [Video] = []
         let data = JSON(data: object.data!)
         let items = data["items"]
         for i in 0..<items.count {
-            videos.append( makeVideoObject(items, i: i) )
+            list.append( makeVideoObject(items, i: i) )
         }
-        return videos
+        return list
     }
     
     private func parseAllPlaylists() -> [AnyObject] {
+        var list: [Playlist] = []
         let data = JSON(data: object.data!)
-        // FIXME: Make parse
-        return [AnyObject]()
+        let items = data["items"]
+        for i in 0..<items.count {
+            list.append( makePlaylistObject(items, i: i) )
+        }
+        return list
     }
     
     // MARK: Parse func body
@@ -140,6 +144,30 @@ class Parser {
     }
     
     // MARK: Helpers
+    private func makePlaylistObject(items: JSON, i: Int) -> Playlist {
+        let playlist = Playlist(entity: getEntity()!, insertIntoManagedObjectContext: context)
+        
+        let uid = items[i]["id"].string
+        playlist.uid = uid
+        
+        let request = NSFetchRequest(entityName: "Playlist")
+        request.predicate = NSPredicate(format: "uid = %@", "uid")
+        if let result = try? context.executeFetchRequest(request) {
+            if !result.isEmpty {
+                if let aux = result[0] as? Playlist { return aux }
+            }
+        }
+        let name = items[i]["snippet"]["title"].string
+        playlist.name = name
+        
+        playlist.about = ""
+        
+        let thumb = items[i]["snippet"]["thumbnails"]["medium"]["url"].string
+        playlist.thumb = thumb
+        
+        debug(playlist)
+        return playlist
+    }
     private func makeVideoObject(items: JSON, i: Int) -> Video {
         let video = Video(entity: getEntity()!, insertIntoManagedObjectContext: context)
         
@@ -161,10 +189,8 @@ class Parser {
             video.date = NSDate()
         }
         
-        let channelId = items[i]["snippet"]["channelId"].string
         video.isFavourite = false
         video.isNew = true
-        video.playlist = getOrCreatePlayist(channelId!)
 //        debug(video)
         return video
     }
@@ -200,6 +226,14 @@ class Parser {
         let formatter = NSDateFormatter()
         formatter.dateFormat = ""
         return formatter.dateFromString(d) ?? NSDate()
+    }
+    
+    private func debug(playlist: Playlist) {
+        Log.d(
+            "uid: \(playlist.uid)\n" +
+                "name: \(playlist.name)\n" +
+                "thumb: \(playlist.thumb)\n"
+        )
     }
     
     private func debug(video: Video) {

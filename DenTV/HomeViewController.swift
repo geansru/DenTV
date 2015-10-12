@@ -28,9 +28,18 @@ class HomeViewController: UIViewController {
         list = getFromStorage()
         if list.isEmpty { refresh() }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let nav = segue.destinationViewController as! UINavigationController
+        let controller = nav.topViewController as! VideoDetailsViewController
+        let video = list[sender as! Int]
+        controller.video = video
+        controller.managedContext = managedContext
+    }
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+    // MARK: - UITableViewDataSource, UITableViewDelegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
     }
@@ -39,6 +48,11 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         configureCell(cell, indexPath: indexPath)
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        performSegueWithIdentifier("showVideo", sender: indexPath.row)
     }
     
     private func configureCell(cell: UITableViewCell, indexPath: NSIndexPath) {
