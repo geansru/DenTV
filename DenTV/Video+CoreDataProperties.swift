@@ -18,6 +18,6 @@ extension Video {
     @NSManaged var name: String?
     @NSManaged var about: String?
     @NSManaged var thumb: String?
-    @NSManaged var playlist: NSManagedObject?
+    @NSManaged var playlist: Playlist?
 
 }

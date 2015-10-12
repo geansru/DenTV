@@ -9,13 +9,15 @@
     </entity>
     <entity name="Video" representedClassName=".Video" syncable="YES">
         <attribute name="about" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isFavourite" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isNew" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thumb" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="playlist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Playlist" inverseName="videos" inverseEntity="Playlist" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Video" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="Playlist" positionX="-54" positionY="18" width="128" height="120"/>
+        <element name="Video" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

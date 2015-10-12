@@ -47,11 +47,13 @@ class CoreDataStack {
     }
     
     func save() {
-        do {
-            try context.save()
-        } catch let error as NSError {
-            print(__FUNCTION__)
-            print(error.localizedDescription)
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch let error as NSError {
+                print(__FUNCTION__)
+                print(error.localizedDescription)
+            }
         }
     }
     
