@@ -57,40 +57,53 @@ class Content {
     
     func download() {
         status = .Searching
-        delegate?.contentDownloaderWillStart(self, status: status)
+        dispatch_async(dispatch_get_main_queue()) {
+            delegate?.contentDownloaderWillStart(self, status: status)
+        }
         if let url = object.getURL() {
             let session = NSURLSession.sharedSession()
             object.dataTask = session.dataTaskWithURL(url, completionHandler: {
                 (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
                 if let error = error {
                     self.status = .Error(errorMessage: response?.description ?? "")
-                    self.delegate?.contentDownloaderDidReceiveError(self, status: self.status, error: error)
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.delegate?.contentDownloaderDidReceiveError(self, status: self.status, error: error)
+                    }
                 }
                 
                 if let response = response as? NSHTTPURLResponse {
-                    self.delegate?.contentDownloaderDidReceiveResponse(self, response: response)
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.delegate?.contentDownloaderDidReceiveResponse(self, response: response)
+                    }
                     if response.statusCode != 200 {
                         let message = "response code is \(response.statusCode)"
                         self.status = .Error(errorMessage: message)
-                        self.delegate?.contentDownloaderDidReceiveError(self, status: self.status, error: nil)
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.delegate?.contentDownloaderDidReceiveError(self, status: self.status, error: nil)
+                        }
                     }
                 }
                 
                 if let data = data {
                     self.status = .Result(result: [data])
-                    self.delegate?.contentDownloaderDidFinishWithResult(
-                        self, status: self.status, result: data)
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.delegate?.contentDownloaderDidFinishWithResult(
+                            self, status: self.status, result: data)
+                    }
                 } else {
-                    let message = "data is nil"
-                    self.status = .Error(errorMessage: message)
-                    self.delegate?.contentDownloaderDidReceiveError(self, status: self.status, error: nil)
+                    self.status = .NotFound
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.delegate?.contentDownloaderDidFinishWithNotFound(self, status: self.status)
+                    }
                 }
             })
             object.dataTask?.resume()
         } else {
             let message = "class: Content; function \(__FUNCTION__); object.getURL() return nil"
             status = State.Error(errorMessage: message)
-            delegate?.contentDownloaderDidReceiveError(self, status: status, error: nil)
+            dispatch_async(dispatch_get_main_queue()) {
+                delegate?.contentDownloaderDidReceiveError(self, status: status, error: nil)
+            }
         }
     }
 }

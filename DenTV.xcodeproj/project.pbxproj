@@ -13,8 +13,8 @@
 		D534F23C1BCB91E100AA8201 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = D534F23B1BCB91E100AA8201 /* Content.swift */; settings = {ASSET_TAGS = (); }; };
 		D534F23E1BCB91EF00AA8201 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D534F23D1BCB91EF00AA8201 /* Parser.swift */; settings = {ASSET_TAGS = (); }; };
 		D534F2411BCBBE8400AA8201 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = D534F2401BCBBE8400AA8201 /* Log.swift */; settings = {ASSET_TAGS = (); }; };
+		D534F2471BCBE9D000AA8201 /* Video+CoreDataProperties 18-14-08-048.swift in Sources */ = {isa = PBXBuildFile; fileRef = D534F2461BCBE9D000AA8201 /* Video+CoreDataProperties 18-14-08-048.swift */; settings = {ASSET_TAGS = (); }; };
 		D53C66D41BCAC40D0065C916 /* DenTV.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D53C66D21BCAC40D0065C916 /* DenTV.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
-		D53C66DA1BCAC65F0065C916 /* Video+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53C66D61BCAC65F0065C916 /* Video+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
 		D53C66DB1BCAC65F0065C916 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53C66D71BCAC65F0065C916 /* Video.swift */; settings = {ASSET_TAGS = (); }; };
 		D53C66DC1BCAC65F0065C916 /* Playlist+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53C66D81BCAC65F0065C916 /* Playlist+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
 		D53C66DD1BCAC65F0065C916 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53C66D91BCAC65F0065C916 /* Playlist.swift */; settings = {ASSET_TAGS = (); }; };
@@ -36,8 +36,8 @@
 		D534F23B1BCB91E100AA8201 /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		D534F23D1BCB91EF00AA8201 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		D534F2401BCBBE8400AA8201 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		D534F2461BCBE9D000AA8201 /* Video+CoreDataProperties 18-14-08-048.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Video+CoreDataProperties 18-14-08-048.swift"; sourceTree = "<group>"; };
 		D53C66D31BCAC40D0065C916 /* DenTV.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DenTV.xcdatamodel; sourceTree = "<group>"; };
-		D53C66D61BCAC65F0065C916 /* Video+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Video+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D53C66D71BCAC65F0065C916 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		D53C66D81BCAC65F0065C916 /* Playlist+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Playlist+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D53C66D91BCAC65F0065C916 /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
@@ -87,8 +87,8 @@
 		D53C66D51BCAC6490065C916 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D534F2461BCBE9D000AA8201 /* Video+CoreDataProperties 18-14-08-048.swift */,
 				D529006A1BCABC79001426F6 /* CoreDataStack.swift */,
-				D53C66D61BCAC65F0065C916 /* Video+CoreDataProperties.swift */,
 				D53C66D71BCAC65F0065C916 /* Video.swift */,
 				D53C66D81BCAC65F0065C916 /* Playlist+CoreDataProperties.swift */,
 				D53C66D91BCAC65F0065C916 /* Playlist.swift */,
@@ -272,13 +272,13 @@
 				D5EFC6D41BCAA1D700423BF4 /* FavouriteVideoListViewController.swift in Sources */,
 				D5462A361BCA4887007673D5 /* PlaylistsViewController.swift in Sources */,
 				D53C66D41BCAC40D0065C916 /* DenTV.xcdatamodeld in Sources */,
-				D53C66DA1BCAC65F0065C916 /* Video+CoreDataProperties.swift in Sources */,
 				D534F23E1BCB91EF00AA8201 /* Parser.swift in Sources */,
 				D53C66DB1BCAC65F0065C916 /* Video.swift in Sources */,
 				D53C66DC1BCAC65F0065C916 /* Playlist+CoreDataProperties.swift in Sources */,
 				D5462A321BCA4887007673D5 /* AppDelegate.swift in Sources */,
 				D534F2411BCBBE8400AA8201 /* Log.swift in Sources */,
 				D529006B1BCABC79001426F6 /* CoreDataStack.swift in Sources */,
+				D534F2471BCBE9D000AA8201 /* Video+CoreDataProperties 18-14-08-048.swift in Sources */,
 				D53C66DD1BCAC65F0065C916 /* Playlist.swift in Sources */,
 				D5462A341BCA4887007673D5 /* HomeViewController.swift in Sources */,
 				D534F23A1BCB91CD00AA8201 /* Seed.swift in Sources */,
