@@ -9,8 +9,13 @@
 /* Begin PBXBuildFile section */
 		70FF5D99AD8EFB71FF0FC73D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D2F48610F672A29F4896DE /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D504A1DE1BCC2DA5000145AD /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D504A1DD1BCC2DA5000145AD /* UIImageView+DownloadImage.swift */; settings = {ASSET_TAGS = (); }; };
-		D504A1E01BCC3013000145AD /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D504A1DF1BCC3013000145AD /* PlayerViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D51C5C081BCC236B007156DB /* VideoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51C5C071BCC236B007156DB /* VideoDetailsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D51F167E1BCCE6DC00038217 /* VideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D51F167D1BCCE6DC00038217 /* VideoCell.xib */; settings = {ASSET_TAGS = (); }; };
+		D51F16801BCCEBC400038217 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51F167F1BCCEBC400038217 /* VideoCell.swift */; settings = {ASSET_TAGS = (); }; };
+		D51F16821BCCF15D00038217 /* PlaylistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D51F16811BCCF15D00038217 /* PlaylistCell.xib */; settings = {ASSET_TAGS = (); }; };
+		D51F16841BCCF4D900038217 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51F16831BCCF4D900038217 /* Constants.swift */; settings = {ASSET_TAGS = (); }; };
+		D51F16861BCCF50400038217 /* Staff.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51F16851BCCF50400038217 /* Staff.swift */; settings = {ASSET_TAGS = (); }; };
+		D51F16881BCCF65600038217 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51F16871BCCF65600038217 /* Entity.swift */; settings = {ASSET_TAGS = (); }; };
 		D529006B1BCABC79001426F6 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529006A1BCABC79001426F6 /* CoreDataStack.swift */; settings = {ASSET_TAGS = (); }; };
 		D534F23A1BCB91CD00AA8201 /* Seed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D534F2391BCB91CD00AA8201 /* Seed.swift */; settings = {ASSET_TAGS = (); }; };
 		D534F23C1BCB91E100AA8201 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = D534F23B1BCB91E100AA8201 /* Content.swift */; settings = {ASSET_TAGS = (); }; };
@@ -35,8 +40,13 @@
 		40D2F48610F672A29F4896DE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		479803E71E2FE76BB6632109 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D504A1DD1BCC2DA5000145AD /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
-		D504A1DF1BCC3013000145AD /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		D51C5C071BCC236B007156DB /* VideoDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDetailsViewController.swift; sourceTree = "<group>"; };
+		D51F167D1BCCE6DC00038217 /* VideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCell.xib; sourceTree = "<group>"; };
+		D51F167F1BCCEBC400038217 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		D51F16811BCCF15D00038217 /* PlaylistCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaylistCell.xib; sourceTree = "<group>"; };
+		D51F16831BCCF4D900038217 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D51F16851BCCF50400038217 /* Staff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Staff.swift; sourceTree = "<group>"; };
+		D51F16871BCCF65600038217 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		D529006A1BCABC79001426F6 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		D534F2391BCB91CD00AA8201 /* Seed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seed.swift; sourceTree = "<group>"; };
 		D534F23B1BCB91E100AA8201 /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
@@ -84,9 +94,11 @@
 			children = (
 				D504A1DD1BCC2DA5000145AD /* UIImageView+DownloadImage.swift */,
 				D534F2401BCBBE8400AA8201 /* Log.swift */,
+				D51F16851BCCF50400038217 /* Staff.swift */,
 				D534F2391BCB91CD00AA8201 /* Seed.swift */,
 				D534F23B1BCB91E100AA8201 /* Content.swift */,
 				D534F23D1BCB91EF00AA8201 /* Parser.swift */,
+				D51F16871BCCF65600038217 /* Entity.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -99,6 +111,7 @@
 				D53C66D71BCAC65F0065C916 /* Video.swift */,
 				D53C66D81BCAC65F0065C916 /* Playlist+CoreDataProperties.swift */,
 				D53C66D91BCAC65F0065C916 /* Playlist.swift */,
+				D51F16831BCCF4D900038217 /* Constants.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -132,11 +145,13 @@
 				D5462A331BCA4887007673D5 /* HomeViewController.swift */,
 				D5462A351BCA4887007673D5 /* PlaylistsViewController.swift */,
 				D51C5C071BCC236B007156DB /* VideoDetailsViewController.swift */,
-				D504A1DF1BCC3013000145AD /* PlayerViewController.swift */,
 				D5EFC6D31BCAA1D700423BF4 /* FavouriteVideoListViewController.swift */,
 				D5462A371BCA4887007673D5 /* Main.storyboard */,
 				D5462A3A1BCA488A007673D5 /* Assets.xcassets */,
 				D5462A3C1BCA488B007673D5 /* LaunchScreen.storyboard */,
+				D51F167D1BCCE6DC00038217 /* VideoCell.xib */,
+				D51F16811BCCF15D00038217 /* PlaylistCell.xib */,
+				D51F167F1BCCEBC400038217 /* VideoCell.swift */,
 				D5462A3F1BCA488B007673D5 /* Info.plist */,
 			);
 			path = DenTV;
@@ -218,7 +233,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5462A3E1BCA488B007673D5 /* LaunchScreen.storyboard in Resources */,
+				D51F167E1BCCE6DC00038217 /* VideoCell.xib in Resources */,
 				D5462A3B1BCA488A007673D5 /* Assets.xcassets in Resources */,
+				D51F16821BCCF15D00038217 /* PlaylistCell.xib in Resources */,
 				D5462A391BCA4887007673D5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,15 +303,18 @@
 				D53C66DC1BCAC65F0065C916 /* Playlist+CoreDataProperties.swift in Sources */,
 				D51C5C081BCC236B007156DB /* VideoDetailsViewController.swift in Sources */,
 				D5462A321BCA4887007673D5 /* AppDelegate.swift in Sources */,
+				D51F16801BCCEBC400038217 /* VideoCell.swift in Sources */,
 				D534F2411BCBBE8400AA8201 /* Log.swift in Sources */,
 				D529006B1BCABC79001426F6 /* CoreDataStack.swift in Sources */,
 				D534F2471BCBE9D000AA8201 /* Video+CoreDataProperties 18-14-08-048.swift in Sources */,
 				D53C66DD1BCAC65F0065C916 /* Playlist.swift in Sources */,
+				D51F16861BCCF50400038217 /* Staff.swift in Sources */,
 				D504A1DE1BCC2DA5000145AD /* UIImageView+DownloadImage.swift in Sources */,
 				D5462A341BCA4887007673D5 /* HomeViewController.swift in Sources */,
+				D51F16881BCCF65600038217 /* Entity.swift in Sources */,
 				D534F23A1BCB91CD00AA8201 /* Seed.swift in Sources */,
 				D534F23C1BCB91E100AA8201 /* Content.swift in Sources */,
-				D504A1E01BCC3013000145AD /* PlayerViewController.swift in Sources */,
+				D51F16841BCCF4D900038217 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -41,7 +41,7 @@ class FavouriteVideoListViewController: UIViewController {
     
     func getFromStorage() -> [Video] {
         let request = NSFetchRequest(entityName: "Video")
-        request.predicate = NSPredicate(format: "isFavourite = %@", true)
+        request.predicate = NSPredicate(format: "isFavourite = YES")
         if let aux = try? managedContext.executeFetchRequest(request) {
             if let result = aux as? [Video]{
                 Log.m(__FUNCTION__)

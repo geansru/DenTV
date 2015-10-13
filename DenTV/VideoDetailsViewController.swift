@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import youtube_ios_player_helper
 
 class VideoDetailsViewController: UITableViewController {
 
@@ -17,7 +18,6 @@ class VideoDetailsViewController: UITableViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
     @IBAction func save(sender: AnyObject) {
         let liked = !video.isFavourite!.boolValue
         video.isFavourite = NSNumber(bool: liked)
@@ -25,7 +25,8 @@ class VideoDetailsViewController: UITableViewController {
     }
     // MARK: - @IBOutlets
     
-    @IBOutlet weak var thumb: UIImageView!
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var player: YTPlayerView!
     @IBOutlet weak var publishedLabel: UILabel!
     @IBOutlet weak var aboutLabel: UILabel!
     // MARK: - Properties
@@ -45,14 +46,14 @@ class VideoDetailsViewController: UITableViewController {
         video.isNew = NSNumber(bool: false)
         updateUI()
     }
+    
  
     // MARK: - TableView
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         switch (indexPath.section, indexPath.row) {
-        case (1, 1):
-            let url = NSURL(string: "http://www.youtube.com/watch?v=\(video.uid!)")
-            UIApplication.sharedApplication().openURL(url!)
+        case (0, 0):
+            player.playVideo()
         default: break
         }
     }
@@ -64,11 +65,12 @@ extension VideoDetailsViewController {
     // MARK: Helper
     func updateUI() {
         if video == nil { return }
+        let url = NSURL(string: video.uid!)!
         title = video.name!
         aboutLabel.text = video.about
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.MediumStyle
         publishedLabel.text = formatter.stringFromDate(video.date!)
-        thumb.loadImageWithURL(NSURL(string: video.thumb!)!)
+        player.loadWithVideoId(video.uid!)
     }
 }

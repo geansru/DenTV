@@ -66,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
             if let nav_controller = tabBarController.viewControllers?[2] as? UINavigationController {
-                if let controller = nav_controller.topViewController as? PlaylistsViewController {
+                if let controller = nav_controller.topViewController as? FavouriteVideoListViewController {
                     controller.managedContext = coreDataStack.context
                 }
             }

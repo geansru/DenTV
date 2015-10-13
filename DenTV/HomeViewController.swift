@@ -25,6 +25,9 @@ class HomeViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setNeedsStatusBarAppearanceUpdate()
+        tableView.rowHeight = 245
+        Staff.registerCell(TableViewCellIdentifiers.VideoCell, tableView: tableView)
         list = getFromStorage()
         if list.isEmpty { refresh() }
     }
@@ -45,8 +48,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        configureCell(cell, indexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(
+            TableViewCellIdentifiers.VideoCell, forIndexPath: indexPath) as! VideoCell
+        let video = list[indexPath.row]
+        cell.configureCell(video)
         return cell
     }
     
@@ -56,14 +61,22 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     private func configureCell(cell: UITableViewCell, indexPath: NSIndexPath) {
+        
         let video = list[indexPath.row]
+        let url = NSURL(string: video.uid!)!
+        cell.imageView?.loadImageWithURL(url)
         cell.textLabel?.text = video.name
         cell.detailTextLabel?.text = video.about
     }
 }
 
 extension HomeViewController: UISearchBarDelegate {
-    
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+        return UIBarPosition.TopAttached
+    }
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
 }
 
 extension HomeViewController {
