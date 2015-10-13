@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import QuartzCore
 import youtube_ios_player_helper
 
 class VideoDetailsViewController: UITableViewController {
@@ -33,6 +34,7 @@ class VideoDetailsViewController: UITableViewController {
     
     // MARK: - @IBOutlets
     
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var swtch: UISwitch!
 //    @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var player: YTPlayerView!
@@ -52,6 +54,9 @@ class VideoDetailsViewController: UITableViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        saveButton.layer.cornerRadius = 5
+        saveButton.layer.masksToBounds = true
+        
         updateUI()
     }
     

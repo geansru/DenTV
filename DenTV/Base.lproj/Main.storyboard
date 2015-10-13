@@ -168,10 +168,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mu4-RZ-Y3z">
-                                                    <rect key="frame" x="8" y="17" width="46" height="30"/>
+                                                    <rect key="frame" x="8" y="17" width="60" height="40"/>
+                                                    <color key="backgroundColor" red="1" green="0.89954377689999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="46" id="TTz-tS-3gW"/>
-                                                        <constraint firstAttribute="height" constant="30" id="ovd-zP-gvB"/>
+                                                        <constraint firstAttribute="width" constant="60" id="TTz-tS-3gW"/>
+                                                        <constraint firstAttribute="height" constant="40" id="ovd-zP-gvB"/>
                                                     </constraints>
                                                     <state key="normal" title="Назад">
                                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -181,6 +182,7 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <color key="backgroundColor" red="1" green="0.89954377689999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="mu4-RZ-Y3z" firstAttribute="leading" secondItem="x5B-9V-9kg" secondAttribute="leading" constant="8" id="Cx4-NJ-QKi"/>
                                                 <constraint firstItem="mu4-RZ-Y3z" firstAttribute="top" secondItem="x5B-9V-9kg" secondAttribute="top" constant="17" id="gEo-iQ-5Lz"/>
@@ -309,6 +311,7 @@
                         <outlet property="aboutLabel" destination="pt9-4Q-USk" id="uBD-ua-B3t"/>
                         <outlet property="player" destination="fkN-Y1-JNS" id="pn7-Nl-dtK"/>
                         <outlet property="publishedLabel" destination="uIC-85-L7m" id="vci-Nq-1eC"/>
+                        <outlet property="saveButton" destination="mu4-RZ-Y3z" id="w9v-ob-T1M"/>
                         <outlet property="swtch" destination="eSb-p6-8Rz" id="RPv-l9-zH1"/>
                     </connections>
                 </tableViewController>
