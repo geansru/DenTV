@@ -175,18 +175,9 @@ class Parser {
     private func makeVideoObjectFromPlaylist(items: JSON, i: Int) -> Video {
         let video = Video(entity: getEntity(Source.Search)!, insertIntoManagedObjectContext: context)
         
-        let uid = items[i]["id"].string
+        let uid = items[i]["snippet"]["resourceId"]["videoId"].string
         video.uid = uid
         
-//        let request = NSFetchRequest(entityName: "Video")
-//        request.predicate = NSPredicate(format: "uid = %@", uid!)
-//        if let results = try? context.executeFetchRequest(request) {
-//            if results.count > 0 {
-//                let ret = results.first! as! Video
-//                debug(ret)
-//                return ret
-//            }
-//        }
         let name = items[i]["snippet"]["title"].string
         video.name = name
         

@@ -52,7 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             bgView.backgroundColor = UIColor.blackColor()
             tabBar.insertSubview(bgView, atIndex: 0)
         }
-        UITabBar.appearance().tintColor = UIColor.yellowColor()
+        UITabBar.appearance().tintColor = tintColor
+        window?.tintColor = UIColor.grayColor()
     }
 
     func propagateContext() {
@@ -61,16 +62,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let controller = tabBarController.viewControllers?.first as? HomeViewController {
                 controller.managedContext = coreDataStack.context
             }
-            if let nav_controller = tabBarController.viewControllers?[1] as? UINavigationController {
-                if let controller = nav_controller.topViewController as? PlaylistsViewController {
-                    controller.managedContext = coreDataStack.context
-                }
+            if let controller = tabBarController.viewControllers?[1] as? PlaylistsViewController {
+                controller.managedContext = coreDataStack.context
             }
-            if let nav_controller = tabBarController.viewControllers?[2] as? UINavigationController {
-                nav_controller.navigationBar.backgroundColor = UIColor.whiteColor()
-                if let controller = nav_controller.topViewController as? FavouriteVideoListViewController {
-                    controller.managedContext = coreDataStack.context
-                }
+            if let controller = tabBarController.viewControllers?[2] as? FavouriteVideoListViewController {
+                controller.managedContext = coreDataStack.context
             }
         }
     }

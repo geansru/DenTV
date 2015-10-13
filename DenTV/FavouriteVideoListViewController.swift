@@ -26,17 +26,24 @@ class FavouriteVideoListViewController: UIViewController {
         refresh()
     }
     
+    // MARK: - Lifecycle
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         refresh()
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
+    // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let nav = segue.destinationViewController as! UINavigationController
-        let controller = nav.topViewController as! VideoDetailsViewController
-        controller.managedContext = self.managedContext
-        let video = list[sender as! Int]
-        controller.video = video
+//        let nav = segue.destinationViewController as! UINavigationController
+//        let controller = nav.topViewController as! VideoDetailsViewController
+        let controller = segue.destinationViewController as! VideoDetailsViewController
+        controller.video = list[sender as! Int]
+        controller.managedContext = managedContext
     }
     
     // MARK: Helper

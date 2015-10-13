@@ -23,8 +23,17 @@ class VideoDetailsViewController: UITableViewController {
         video.isFavourite = NSNumber(bool: liked)
         let _ = try? managedContext.save()
     }
+    
+    @IBAction func switchSave(sender: UISwitch) {
+        let state = !video.isFavourite!.boolValue
+        swtch.on = state
+        video.isFavourite = NSNumber(bool: state)
+        let _ = try? managedContext.save()
+    }
+    
     // MARK: - @IBOutlets
     
+    @IBOutlet weak var swtch: UISwitch!
 //    @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var player: YTPlayerView!
     @IBOutlet weak var publishedLabel: UILabel!
@@ -43,7 +52,6 @@ class VideoDetailsViewController: UITableViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        video.isNew = NSNumber(bool: false)
         updateUI()
     }
     
@@ -65,12 +73,13 @@ extension VideoDetailsViewController {
     // MARK: Helper
     func updateUI() {
         if video == nil { return }
-        let url = NSURL(string: video.uid!)!
+        swtch.on = video.isFavourite?.boolValue ?? false
         title = video.name!
         aboutLabel.text = video.about
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.MediumStyle
         publishedLabel.text = formatter.stringFromDate(video.date!)
         player.loadWithVideoId(video.uid!)
+        video.isNew = NSNumber(bool: false)
     }
 }

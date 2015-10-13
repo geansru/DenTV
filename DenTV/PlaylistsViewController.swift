@@ -59,6 +59,7 @@ class PlaylistsViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setNeedsStatusBarAppearanceUpdate()
         Staff.registerCell(TableViewCellIdentifiers.PlaylistCell, tableView: tableView)
         tableView.rowHeight = 200
         list = getFromStorage()
@@ -66,6 +67,9 @@ class PlaylistsViewController: UIViewController {
         tableView.reloadData()
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
     // MARK: Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let controller = segue.destinationViewController as! PlaylistItemsViewController
