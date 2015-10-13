@@ -25,7 +25,7 @@ class VideoDetailsViewController: UITableViewController {
     }
     // MARK: - @IBOutlets
     
-    @IBOutlet weak var image: UIImageView!
+//    @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var player: YTPlayerView!
     @IBOutlet weak var publishedLabel: UILabel!
     @IBOutlet weak var aboutLabel: UILabel!

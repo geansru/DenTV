@@ -59,11 +59,20 @@ class PlaylistsViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        Staff.registerCell(TableViewCellIdentifiers.PlaylistCell, tableView: tableView)
+        tableView.rowHeight = 200
         list = getFromStorage()
         if list.isEmpty { refresh() }
         tableView.reloadData()
     }
     
+    // MARK: Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let controller = segue.destinationViewController as! PlaylistItemsViewController
+        controller.managedContext = managedContext
+        let uid = list[sender as! Int].uid!
+        controller.source = Source.Playlist(uid: uid)
+    }
 }
 
 extension PlaylistsViewController: UITableViewDataSource, UITableViewDelegate {
@@ -72,15 +81,21 @@ extension PlaylistsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        configureCell(cell, indexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(
+            TableViewCellIdentifiers.PlaylistCell, forIndexPath: indexPath) as! PlaylistCell
+        cell.configureUI(list[indexPath.row])
+//        configureCell(cell, indexPath: indexPath)
         return cell
     }
     
     private func configureCell(cell: UITableViewCell, indexPath: NSIndexPath) {
         let object = list[indexPath.row]
         cell.textLabel?.text = "\(indexPath.row). " + object.name!
-//        Log.m(object.name!)
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        performSegueWithIdentifier("showVideo", sender: indexPath.row)
     }
 }
 

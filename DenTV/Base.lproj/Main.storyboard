@@ -90,9 +90,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="63.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="z68-aW-Vxb" kind="show" id="hjh-pQ-Y5Q"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -118,6 +115,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="0qx-za-odU" id="pa8-6q-WbL"/>
+                        <segue destination="z68-aW-Vxb" kind="show" identifier="showVideo" id="yCn-3R-WsJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -231,10 +229,10 @@
             </objects>
             <point key="canvasLocation" x="3733" y="-307"/>
         </scene>
-        <!--View Controller-->
+        <!--Playlist Items View Controller-->
         <scene sceneID="2WC-Ls-G83">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="z68-aW-Vxb" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="z68-aW-Vxb" customClass="PlaylistItemsViewController" customModule="DenTV" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="60m-dz-p4M"/>
                         <viewControllerLayoutGuide type="bottom" id="gTy-Dq-R2x"/>
@@ -256,6 +254,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="z68-aW-Vxb" id="qxK-Yc-kZo"/>
+                                    <outlet property="delegate" destination="z68-aW-Vxb" id="ubb-gL-04D"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -267,6 +269,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="8Xq-ck-uXv" id="jlj-Op-235"/>
                         <segue destination="xHE-E4-GxP" kind="presentation" identifier="showVideo" modalTransitionStyle="flipHorizontal" id="ycp-3D-Yk4"/>
                     </connections>
                 </viewController>
@@ -407,6 +410,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3vu-iX-YBt"/>
+        <segue reference="ycp-3D-Yk4"/>
     </inferredMetricsTieBreakers>
 </document>

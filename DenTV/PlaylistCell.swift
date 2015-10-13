@@ -1,5 +1,5 @@
 //
-//  VideoCell.swift
+//  PlaylistCell.swift
 //  DenTV
 //
 //  Created by Dmitriy Roytman on 13.10.15.
@@ -8,9 +8,8 @@
 
 import UIKit
 
-class VideoCell: UITableViewCell {
+class PlaylistCell: UITableViewCell {
 
-    @IBOutlet weak var about: UILabel!
     @IBOutlet weak var thumb: UIImageView!
     @IBOutlet weak var title: UILabel!
     override func awakeFromNib() {
@@ -24,13 +23,10 @@ class VideoCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(video: Video) {
-        title.text = video.name
-        about.text = video.about
-        if let path = video.thumb {
-            let url = NSURL(string: path)!
-            thumb.loadImageWithURL(url)
-        }
+    func configureUI(playlist: Playlist) {
+        let url = NSURL(string: playlist.thumb!)!
+        thumb.loadImageWithURL(url)
+        title.text = playlist.name
     }
 
 }

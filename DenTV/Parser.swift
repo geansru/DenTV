@@ -95,13 +95,17 @@ class Parser {
     
     // MARK: Parse current cases
     private func parsePlaylist() -> [AnyObject] {
+        var list: [Video] = []
         let data = JSON(data: object.data!)
-        // FIXME: Make parse
-        return [AnyObject]()
+        let items = data["items"]
+        for i in 0..<items.count {
+            list.append( makeVideoObjectFromPlaylist(items, i: i) )
+        }
+        return list
     }
     
     private func parseVideo() -> [AnyObject] {
-        let data = JSON(data: object.data!)
+//        let data = JSON(data: object.data!)
         // FIXME: Make parse
         return [AnyObject]()
     }
@@ -168,12 +172,52 @@ class Parser {
         debug(playlist)
         return playlist
     }
+    private func makeVideoObjectFromPlaylist(items: JSON, i: Int) -> Video {
+        let video = Video(entity: getEntity(Source.Search)!, insertIntoManagedObjectContext: context)
+        
+        let uid = items[i]["id"].string
+        video.uid = uid
+        
+//        let request = NSFetchRequest(entityName: "Video")
+//        request.predicate = NSPredicate(format: "uid = %@", uid!)
+//        if let results = try? context.executeFetchRequest(request) {
+//            if results.count > 0 {
+//                let ret = results.first! as! Video
+//                debug(ret)
+//                return ret
+//            }
+//        }
+        let name = items[i]["snippet"]["title"].string
+        video.name = name
+        
+        let about = items[i]["snippet"]["description"].string
+        video.about = about
+        
+        let thumb = items[i]["snippet"]["thumbnails"]["medium"]["url"].string
+        video.thumb = thumb
+        if let publishedAt = items[i]["snippet"]["publishedAt"].string {
+            let published = formatDate(publishedAt)
+            video.date = published
+        } else {
+            video.date = NSDate()
+        }
+        
+        video.isFavourite = false
+        video.isNew = true
+        debug(video)
+        return video
+    }
     private func makeVideoObject(items: JSON, i: Int) -> Video {
         let video = Video(entity: getEntity()!, insertIntoManagedObjectContext: context)
         
         let uid = items[i]["id"]["videoId"].string
         video.uid = uid
         
+//        let request = NSFetchRequest(entityName: "Video")
+//        request.predicate = NSPredicate(format: "uid = %@", uid!)
+//        if let results = try? context.executeFetchRequest(request) {
+//            if results.count > 0 { return results.first! as! Video }
+//        }
         let name = items[i]["snippet"]["title"].string
         video.name = name
         
@@ -184,7 +228,10 @@ class Parser {
         video.thumb = thumb
         
         if let publishedAt = items[i]["snippet"]["publishedAt"].string {
-            video.date = formatDate(publishedAt)
+            let published = formatDate(publishedAt)
+//            Log.m(video.date?.description ?? "No date")
+            Log.m("published: \(published)")
+            video.date = published
         } else {
             video.date = NSDate()
         }
