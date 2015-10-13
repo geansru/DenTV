@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func configureAppearance() {
         if let tabBarController = window?.rootViewController as? UITabBarController {
             let tabBar = tabBarController.tabBar
-            let bgView = UIView(frame: CGRectMake(0, 0, (window?.frame.width)!, tabBar.frame.height))
+            let bgView = UIView(frame: CGRectMake(0, 0, (window?.frame.height)!, tabBar.frame.height))
             bgView.backgroundColor = UIColor.blackColor()
             tabBar.insertSubview(bgView, atIndex: 0)
         }
@@ -57,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func propagateContext() {
         if let tabBarController = window?.rootViewController as? UITabBarController {
+            
             if let controller = tabBarController.viewControllers?.first as? HomeViewController {
                 controller.managedContext = coreDataStack.context
             }
@@ -66,6 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
             if let nav_controller = tabBarController.viewControllers?[2] as? UINavigationController {
+                nav_controller.navigationBar.backgroundColor = UIColor.whiteColor()
                 if let controller = nav_controller.topViewController as? FavouriteVideoListViewController {
                     controller.managedContext = coreDataStack.context
                 }

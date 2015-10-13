@@ -316,13 +316,7 @@
                             <constraint firstItem="FbN-AM-ndI" firstAttribute="leading" secondItem="PuT-N5-aSW" secondAttribute="leading" id="fdp-Or-IsE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Избранное" id="vC6-Cr-8z7">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="gcq-Uy-ISk">
-                            <connections>
-                                <action selector="search:" destination="B3v-hP-wCY" id="x3D-EK-rs2"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Избранное" id="vC6-Cr-8z7"/>
                     <connections>
                         <outlet property="tableView" destination="FbN-AM-ndI" id="coN-Np-chh"/>
                         <segue destination="xHE-E4-GxP" kind="presentation" identifier="showVideo" id="Z5c-5o-vyv"/>
@@ -410,6 +404,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ycp-3D-Yk4"/>
+        <segue reference="Z5c-5o-vyv"/>
     </inferredMetricsTieBreakers>
 </document>
