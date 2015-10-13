@@ -18,6 +18,8 @@ class HomeViewController: UIViewController {
     var data: NSData?
     var list: [Video] = []
     var entity: Entity!
+    var predicate: NSPredicate!
+    
     func closure(result: [AnyObject]) {
         if let _ = result as? [Video] {
             list = result as! [Video]
@@ -40,13 +42,11 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         entity = Entity(closure: closure, managedContext: managedContext)
         configureUI()
-//        list = getFromStorage()
+        list = getFromStorage()
         if list.isEmpty { entity.refresh() }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        let nav = segue.destinationViewController as! UINavigationController
-//        let controller = nav.topViewController as! VideoDetailsViewController
         let controller = segue.destinationViewController as! VideoDetailsViewController
         controller.video = list[sender as! Int]
         controller.managedContext = managedContext
@@ -76,6 +76,23 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension HomeViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.text = ""
+        predicate = nil
+        entity.refresh()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        if let text = searchBar.text {
+            if text.isEmpty { return }
+            predicate = NSPredicate(format: "name CONTAINS[cd] %@", text)
+            refresh()
+        }
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+    
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
         return UIBarPosition.TopAttached
     }
@@ -86,6 +103,11 @@ extension HomeViewController: UISearchBarDelegate {
 
 extension HomeViewController {
     // MARK: Helper
+    func refresh() {
+        list = getFromStorage()
+        tableView.reloadData()
+    }
+    
     func configureUI() {
         self.setNeedsStatusBarAppearanceUpdate()
         tableView.rowHeight = 245
@@ -94,6 +116,7 @@ extension HomeViewController {
     func getFromStorage() -> [Video] {
         var list = [Video]()
         let request = NSFetchRequest(entityName: "Video")
+        if let _ = predicate { request.predicate = predicate }
         if let aux = try? managedContext.executeFetchRequest(request) {
             if let result = aux as? [Video]{
                 list = result

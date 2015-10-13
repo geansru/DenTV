@@ -199,16 +199,11 @@ class Parser {
         return video
     }
     private func makeVideoObject(items: JSON, i: Int) -> Video {
-        let video = Video(entity: getEntity()!, insertIntoManagedObjectContext: context)
-        
         let uid = items[i]["id"]["videoId"].string
-        video.uid = uid
+        if let video = searchForVideoObject(uid!) { return video }
         
-//        let request = NSFetchRequest(entityName: "Video")
-//        request.predicate = NSPredicate(format: "uid = %@", uid!)
-//        if let results = try? context.executeFetchRequest(request) {
-//            if results.count > 0 { return results.first! as! Video }
-//        }
+        let video = Video(entity: getEntity()!, insertIntoManagedObjectContext: context)
+        video.uid = uid
         let name = items[i]["snippet"]["title"].string
         video.name = name
         
@@ -220,7 +215,6 @@ class Parser {
         
         if let publishedAt = items[i]["snippet"]["publishedAt"].string {
             let published = formatDate(publishedAt)
-//            Log.m(video.date?.description ?? "No date")
             Log.m("published: \(published)")
             video.date = published
         } else {
@@ -231,6 +225,15 @@ class Parser {
         video.isNew = true
 //        debug(video)
         return video
+    }
+    
+    func searchForVideoObject(uid: String) -> Video? {
+        let request = NSFetchRequest(entityName: "Video")
+        request.predicate = NSPredicate(format: "uid = %@", uid)
+        if let results = try? context.executeFetchRequest(request) {
+            if results.count > 0 { return (results.first! as! Video) }
+        }
+        return nil
     }
     
     private func getOrCreatePlayist(uid: String) -> Playlist {

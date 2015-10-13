@@ -12,6 +12,7 @@ import CoreData
 class PlaylistsViewController: UIViewController {
     
     // MARK: - Properties
+    var entity: Entity!
     var dataTask: NSURLSessionDataTask? // Downloadable
     var source = Source.AllPlaylists // Downloadable
     var managedContext: NSManagedObjectContext! // Downloadable
@@ -59,11 +60,13 @@ class PlaylistsViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        entity = Entity(closure: closure, managedContext: managedContext, source: .AllPlaylists)
+        
         self.setNeedsStatusBarAppearanceUpdate()
         Staff.registerCell(TableViewCellIdentifiers.PlaylistCell, tableView: tableView)
         tableView.rowHeight = 200
         list = getFromStorage()
-        if list.isEmpty { refresh() }
+        if list.isEmpty { entity.refresh() }
         tableView.reloadData()
     }
     
@@ -88,13 +91,7 @@ extension PlaylistsViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier(
             TableViewCellIdentifiers.PlaylistCell, forIndexPath: indexPath) as! PlaylistCell
         cell.configureUI(list[indexPath.row])
-//        configureCell(cell, indexPath: indexPath)
         return cell
-    }
-    
-    private func configureCell(cell: UITableViewCell, indexPath: NSIndexPath) {
-        let object = list[indexPath.row]
-        cell.textLabel?.text = "\(indexPath.row). " + object.name!
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -105,8 +102,24 @@ extension PlaylistsViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension PlaylistsViewController {
     // MARK: Helper
+    func closure(result: [AnyObject]) {
+        if let _ = result as? [Playlist] {
+            list = result as! [Playlist]
+            tableView.reloadData()
+            if managedContext.hasChanges {
+                let _ = try? managedContext.save()
+            }
+            Log.m("result is type of [Playlist]. Count \(list.count)")
+        } else {
+            Log.m("result is NOT type of [Playlist]")
+        }
+        Log.m(__FUNCTION__)
+    }
+    
     func refresh() {
-        let _ = Content(object: self, delegate: self)
+//        let _ = Content(object: self, delegate: self)
+        list = getFromStorage()
+        tableView.reloadData()
     }
     
     func getFromStorage() -> [Playlist] {
@@ -122,57 +135,78 @@ extension PlaylistsViewController {
     }
 }
 
-extension PlaylistsViewController: ParserDelegate {
-    // MARK: ParserDelegate
-    func parserDidReceiveError(parser: Parser, error: String) {
-        Log.m(error, level: LogLevel.ERROR)
+extension PlaylistsViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        predicate = nil
+        refresh()
     }
-    func parserWillStartParse(parser: Parser) {
-        Log.m(__FUNCTION__)
-    }
-    func parserDidFinishParse(parser: Parser, result: [AnyObject]) {
-        if let _ = result as? [Playlist] {
-            list = result as! [Playlist]
-            tableView.reloadData()
-            if managedContext.hasChanges {
-                let _ = try? managedContext.save()
-            }
-            Log.m("result is type of [Playlist]. Count \(list.count)")
-        } else {
-            Log.m("result is NOT type of [Playlist]")
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        if let text = searchBar.text {
+            if text.isEmpty { return }
+            predicate = NSPredicate(format: "name CONTAINS[cd] %@", text)
+            refresh()
         }
-        Log.m(__FUNCTION__)
+        searchBar.resignFirstResponder()
+    }
+    
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+        return UIBarPosition.TopAttached
     }
 }
-
-extension PlaylistsViewController:  Parseable {}
-
-extension PlaylistsViewController: Downloadable {
-    func getURL() -> NSURL? {
-        return source.entityValue
-    }
-}
-
-extension PlaylistsViewController: ContentDelegate {
-    // MARK: - ContentDelegate
-    func contentDownloaderDidReceiveError(content: Content, status: State, error: NSError?) {
-        Log.m(status.entityValue)
-        if let _ = error { Log.e(error!) }
-        
-    }
-    func contentDownloaderDidReceiveResponse(content: Content, response: NSHTTPURLResponse) {
-        let mess: String = "Received status code: \(response.statusCode)"
-        Log.m(mess)
-    }
-    func contentDownloaderWillStart(content: Content, status: State) {
-        Log.m(status.entityValue)
-    }
-    func contentDownloaderDidFinishWithNotFound(content: Content, status: State) {
-        Log.m(status.entityValue)
-    }
-    func contentDownloaderDidFinishWithResult(content: Content, status: State, result: NSData) {
-        self.data = result
-        let _ = Parser(object: self, delegate: self)
-        Log.m(status.entityValue)
-    }
-}
+//
+//extension PlaylistsViewController: ParserDelegate {
+//    // MARK: ParserDelegate
+//    func parserDidReceiveError(parser: Parser, error: String) {
+//        Log.m(error, level: LogLevel.ERROR)
+//    }
+//    func parserWillStartParse(parser: Parser) {
+//        Log.m(__FUNCTION__)
+//    }
+//    func parserDidFinishParse(parser: Parser, result: [AnyObject]) {
+//        if let _ = result as? [Playlist] {
+//            list = result as! [Playlist]
+//            tableView.reloadData()
+//            if managedContext.hasChanges {
+//                let _ = try? managedContext.save()
+//            }
+//            Log.m("result is type of [Playlist]. Count \(list.count)")
+//        } else {
+//            Log.m("result is NOT type of [Playlist]")
+//        }
+//        Log.m(__FUNCTION__)
+//    }
+//}
+//
+//extension PlaylistsViewController:  Parseable {}
+//
+//extension PlaylistsViewController: Downloadable {
+//    func getURL() -> NSURL? {
+//        return source.entityValue
+//    }
+//}
+//
+//extension PlaylistsViewController: ContentDelegate {
+//    // MARK: - ContentDelegate
+//    func contentDownloaderDidReceiveError(content: Content, status: State, error: NSError?) {
+//        Log.m(status.entityValue)
+//        if let _ = error { Log.e(error!) }
+//        
+//    }
+//    func contentDownloaderDidReceiveResponse(content: Content, response: NSHTTPURLResponse) {
+//        let mess: String = "Received status code: \(response.statusCode)"
+//        Log.m(mess)
+//    }
+//    func contentDownloaderWillStart(content: Content, status: State) {
+//        Log.m(status.entityValue)
+//    }
+//    func contentDownloaderDidFinishWithNotFound(content: Content, status: State) {
+//        Log.m(status.entityValue)
+//    }
+//    func contentDownloaderDidFinishWithResult(content: Content, status: State, result: NSData) {
+//        self.data = result
+//        let _ = Parser(object: self, delegate: self)
+//        Log.m(status.entityValue)
+//    }
+//}

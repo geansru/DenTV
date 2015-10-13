@@ -18,16 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAz-ut-nH5">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <searchBar contentMode="redraw" placeholder="Начните печатать..." showsCancelButton="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAz-ut-nH5">
+                                <rect key="frame" x="0.0" y="60" width="600" height="44"/>
+                                <color key="tintColor" red="1" green="0.89954377689999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="gnw-h3-EN8"/>
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jIx-Dr-sBG">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="104" width="600" height="447"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="64" id="BX1-We-hRE">
@@ -44,15 +45,25 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="WCy-rF-Q2N"/>
                                 </connections>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dentvLabel" translatesAutoresizingMaskIntoConstraints="NO" id="ei1-Qh-AtW">
+                                <rect key="frame" x="247" y="28" width="107" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="pZG-1l-qnP"/>
+                                    <constraint firstAttribute="width" constant="107" id="qSc-Nu-wzE"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
+                        <color key="backgroundColor" red="0.1058823529" green="0.043137254899999998" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="jIx-Dr-sBG" secondAttribute="trailing" id="8bi-Kr-eg5"/>
                             <constraint firstAttribute="trailing" secondItem="pAz-ut-nH5" secondAttribute="trailing" id="8tt-GH-dSg"/>
+                            <constraint firstItem="ei1-Qh-AtW" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="8" id="9QC-87-l0g"/>
                             <constraint firstItem="jIx-Dr-sBG" firstAttribute="top" secondItem="pAz-ut-nH5" secondAttribute="bottom" id="BHm-we-T6B"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="jIx-Dr-sBG" secondAttribute="bottom" id="FCS-6y-kQH"/>
                             <constraint firstItem="jIx-Dr-sBG" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="Llg-vr-6x3"/>
-                            <constraint firstItem="pAz-ut-nH5" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="WGs-UR-IKJ"/>
+                            <constraint firstItem="pAz-ut-nH5" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="40" id="WGs-UR-IKJ"/>
                             <constraint firstItem="pAz-ut-nH5" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="eHm-f9-Pop"/>
+                            <constraint firstItem="ei1-Qh-AtW" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="jkS-V1-3OT"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Новые видео" image="Home" id="Sov-TZ-sKR"/>
@@ -65,7 +76,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-307"/>
+            <point key="canvasLocation" x="768" y="-308"/>
         </scene>
         <!--Программы-->
         <scene sceneID="wg7-f3-ORb">
@@ -121,7 +132,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="CEQ-b9-phl" secondAttribute="trailing" id="1eT-4e-FfA"/>
                             <constraint firstItem="CEQ-b9-phl" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="4sd-L1-JWR"/>
@@ -376,7 +387,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.1058823529" green="0.043137254899999998" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Ecv-1J-nUw" firstAttribute="top" secondItem="o5G-ID-1Xr" secondAttribute="top" constant="12" id="HPa-8R-Xs4"/>
                                     <constraint firstItem="LEf-eI-COU" firstAttribute="top" secondItem="o5G-ID-1Xr" secondAttribute="top" constant="8" id="hte-4M-Nme"/>
@@ -450,7 +461,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.1058823529" green="0.043137254899999998" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="vVW-QX-WzJ" firstAttribute="centerX" secondItem="Ebe-Kr-YLR" secondAttribute="centerX" id="1Do-W5-8y3"/>
                                     <constraint firstItem="vVW-QX-WzJ" firstAttribute="top" secondItem="Ebe-Kr-YLR" secondAttribute="top" constant="12" id="UZy-Pz-8QM"/>
@@ -508,6 +519,7 @@
         <image name="Home" width="28" height="31"/>
         <image name="Play" width="36" height="25"/>
         <image name="Symbol" width="31" height="31"/>
+        <image name="dentvLabel" width="107" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="oFI-Kb-CxU"/>
