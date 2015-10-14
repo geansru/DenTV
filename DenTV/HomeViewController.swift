@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
     var list: [Video] = []
     var entity: Entity!
     var predicate: NSPredicate!
+    var refresher: UIRefreshControl!
     
     func closure(result: [AnyObject]) {
         if let _ = result as? [Video] {
@@ -30,6 +31,7 @@ class HomeViewController: UIViewController {
             Log.m("result is NOT type of [Video]")
         }
         Log.m(__FUNCTION__)
+        refresher.endRefreshing()
     }
     
     
@@ -44,8 +46,24 @@ class HomeViewController: UIViewController {
         configureUI()
         list = getFromStorage()
         if list.isEmpty { entity.refresh() }
+        initRefresher()
     }
     
+    // MARK: Helper
+    func initRefresher() {
+        refresher = UIRefreshControl()
+        refresher.attributedTitle = NSAttributedString(string: "Потяните вниз для обновления")
+        refresher.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.addSubview(refresher)
+        
+    }
+    
+    func refreshData() {
+        searchBar.resignFirstResponder()
+        entity.refresh()
+    }
+    
+    // MARK: Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let controller = segue.destinationViewController as! VideoDetailsViewController
         controller.video = list[sender as! Int]
