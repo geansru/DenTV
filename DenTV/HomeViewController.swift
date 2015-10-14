@@ -110,7 +110,7 @@ extension HomeViewController {
     
     func configureUI() {
         self.setNeedsStatusBarAppearanceUpdate()
-        tableView.rowHeight = 245
+        tableView.rowHeight = 260
         Staff.registerCell(TableViewCellIdentifiers.VideoCell, tableView: tableView)
     }
     func getFromStorage() -> [Video] {

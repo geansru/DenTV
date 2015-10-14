@@ -230,8 +230,12 @@ class Parser {
     func searchForVideoObject(uid: String) -> Video? {
         let request = NSFetchRequest(entityName: "Video")
         request.predicate = NSPredicate(format: "uid = %@", uid)
-        if let results = try? context.executeFetchRequest(request) {
-            if results.count > 0 { return (results.first! as! Video) }
+        do {
+            if let results = try? context.executeFetchRequest(request) {
+                if results.count > 0 { return (results.first! as! Video) }
+            }
+        } catch _ {
+            return nil
         }
         return nil
     }

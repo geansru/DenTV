@@ -17,8 +17,21 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p32-AS-Ju3">
                         <rect key="frame" x="8" y="0.0" width="304" height="190"/>
                         <constraints>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="II4-XI-lFg">
+                                <variation key="heightClass=regular-widthClass=regular" constant="400"/>
+                            </constraint>
                             <constraint firstAttribute="height" constant="190" id="LTz-lL-Jdv"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="II4-XI-lFg"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="II4-XI-lFg"/>
+                            </mask>
+                        </variation>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eur-KM-yMs">
                         <rect key="frame" x="8" y="198" width="304" height="47"/>
@@ -26,7 +39,7 @@
                             <constraint firstAttribute="height" constant="47" id="atP-a0-5uS"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFB-kr-wGV">
@@ -52,7 +65,20 @@
                     <constraint firstItem="Eur-KM-yMs" firstAttribute="top" secondItem="LFB-kr-wGV" secondAttribute="bottom" constant="8" id="l2Z-IM-ON1"/>
                     <constraint firstAttribute="trailing" secondItem="Eur-KM-yMs" secondAttribute="trailing" constant="8" id="sa9-gy-0Px"/>
                     <constraint firstAttribute="trailing" secondItem="p32-AS-Ju3" secondAttribute="trailing" constant="8" id="wCF-pt-HgT"/>
+                    <constraint firstItem="p32-AS-Ju3" firstAttribute="centerX" secondItem="G9a-oo-aaU" secondAttribute="centerX" id="zET-41-MJv"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="zET-41-MJv"/>
+                    </mask>
+                </variation>
+                <variation key="heightClass=regular-widthClass=regular">
+                    <mask key="constraints">
+                        <include reference="15c-mm-wbk"/>
+                        <exclude reference="wCF-pt-HgT"/>
+                        <include reference="zET-41-MJv"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="about" destination="Eur-KM-yMs" id="vQC-7Y-47k"/>
